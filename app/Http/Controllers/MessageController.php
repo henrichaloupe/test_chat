@@ -8,12 +8,12 @@ use App\Events\MessagePushed;
 
 class MessageController extends Controller
 {
-    public function show()
+    public function index()
     {
         return response()->json(Message::with('user')->orderBy('id', 'desc')->take(10)->get());
     }
 
-    public function save(Request $request)
+    public function store(Request $request)
     {
         $message = (new Message([
             'message' => $request->input('message'),
